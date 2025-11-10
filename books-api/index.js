@@ -63,13 +63,21 @@ async function getOneBookTitle(index) {
   return parsedBooks[index].title;
 }
 
-// async function updateOneBookTitle(index, newBookTitle) {
-//   // read from the file to get the books data
-//   // parse the books data
-//   //find the book at the specified index and update it's title
-//   // stringify the books dat aback into JSON
-//   // write the new data to the file
-// }
+async function updateOneBookTitle(index, newBookTitle) {
+  // read from the file to get the books data
+  const data = await fs.readFile("./books-data.json", "utf8");
+
+  // parse the books data
+  const parsedBooks = JSON.parse(data);
+  console.log(data);
+  //find the book at the specified index and update it's title
+  const bookToUpdate = parsedBooks[index];
+  console.log(bookToUpdate);
+
+  // stringify the books dat aback into JSON
+
+  // write the new data to the file
+}
 // ---------------------------------
 // API Endpoints
 // ---------------------------------
@@ -129,6 +137,7 @@ app.post("/update-one-book-title/:index/:newBookTitle/", async (req, res) => {
   const newBookTitle = req.params.newBookTitle;
 
   // call the helper function
+  await updateOneBookTitle(index, newBookTitle);
 
   res.send(
     `Book title at index ${index} was successfully updated to ${newBookTitle}!`
