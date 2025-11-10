@@ -74,9 +74,15 @@ async function updateOneBookTitle(index, newBookTitle) {
   const bookToUpdate = parsedBooks[index];
   console.log(bookToUpdate);
 
-  // stringify the books dat aback into JSON
+  // update the title of the book
+  parsedBooks[index].title = newBookTitle;
+  console.log(bookToUpdate);
+
+  // stringify the books data back into JSON
+const stringifiedBooks = JSON.stringify(parsedBooks);
 
   // write the new data to the file
+  fs.writeFile("./books-data.json", stringifiedBooks, "utf8");
 }
 // ---------------------------------
 // API Endpoints
