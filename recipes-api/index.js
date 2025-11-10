@@ -66,11 +66,11 @@ async function getRecipesCount() {
   return recipes.length;
 }
 
-// ---------------------------------
-// API Endpoints
-// ---------------------------------
+// // ---------------------------------
+// // API Endpoints
+// // ---------------------------------
 
-// 1. GET /get-all-recipes
+// // 1. GET /get-all-recipes
 
 app.get("/get-all-recipes", async (req, res) => {
   // Call the helper function
