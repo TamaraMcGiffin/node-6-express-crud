@@ -2,18 +2,15 @@
 // Boilerplate Code to Set Up Server
 // ---------------------------------
 
-//Boiler plate code to start server:
-//Importing all of our node modules
+//Import node.js modules
 import express from "express"; // the framework that lets us build webservers
-
-import fs from "fs/promises";
+import fs from "fs/promises"; // Module for async file system operations
 
 //Declare a variable named app and call the express() function to create a new instance of express so we can use all of the methods, fucntions, properties of express
 // which will be saved in app
 const app = express();
 
-//Defining out port number
-//What port should our server listen to?
+//Defining port number for the server to listen on
 const port = 3000; // you can use any port # but developers commonly use 3000. also there are some port numbers you cannot use
 
 //Declaring that this server will be receiving and responding to requests in JSON
@@ -79,7 +76,7 @@ async function updateOneBookTitle(index, newBookTitle) {
   console.log(bookToUpdate);
 
   // stringify the books data back into JSON
-const stringifiedBooks = JSON.stringify(parsedBooks);
+  const stringifiedBooks = JSON.stringify(parsedBooks);
 
   // write the new data to the file
   fs.writeFile("./books-data.json", stringifiedBooks, "utf8");
@@ -142,9 +139,10 @@ app.post("/update-one-book-title/:index/:newBookTitle/", async (req, res) => {
   const index = req.params.index;
   const newBookTitle = req.params.newBookTitle;
 
-  // call the helper function
+  // call the helper function to update the data fiel
   await updateOneBookTitle(index, newBookTitle);
 
+  // Send a success confirmation message
   res.send(
     `Book title at index ${index} was successfully updated to ${newBookTitle}!`
   );
