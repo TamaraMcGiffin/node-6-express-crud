@@ -58,7 +58,7 @@ async function getOneRecipe(index) {
 async function getAllRecipeNames() {
   const data = await fs.readFile("./recipes-data.JSON", "utf8");
   const parsedRecipes = JSON.parse(data);
-  //return the data we're looking for: the name of the recipe at the specified index
+  // return an array containing the names of all the recipes
   return parsedRecipes.map((recipe) => recipe.name);
 }
 
